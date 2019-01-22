@@ -35,7 +35,7 @@ RUN apt-get -y install --no-install-recommends \
 ADD https://dl.google.com/android/repository/sdk-tools-linux-${VERSION_SDK_TOOLS}.zip /tools.zip
 RUN unzip /tools.zip -d /sdk && rm -rf /tools.zip
 
-RUN yes | ${ANDROID_HOME}/tools/bin/sdkmanager --licenses
+RUN yes | ${ANDROID_HOME}/tools/bin/sdkmanager --licenses && ${ANDROID_HOME}/tools/bin/sdkmanager --update
 
 RUN mkdir -p $HOME/.android && touch $HOME/.android/repositories.cfg
 RUN ${ANDROID_HOME}/tools/bin/sdkmanager "tools" "platforms;android-${VERSION_TARGET_SDK}" "build-tools;${VERSION_BUILD_TOOLS}"
